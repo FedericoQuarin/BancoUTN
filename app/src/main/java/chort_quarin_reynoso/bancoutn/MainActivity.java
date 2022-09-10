@@ -2,13 +2,42 @@ package chort_quarin_reynoso.bancoutn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+
+import chort_quarin_reynoso.bancoutn.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
+    final String[] monedas = {"PESOS", "DOLARES"};
+    private static final int CODIGO_ACTIVIDAD2 = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Spinner
+        Spinner spinner = binding.monedasSpinner;
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monedas);
+        spinner.setAdapter(adapter);
+
+        // Boton simular
+        Button botonSimular = binding.buttonSimular;
+
+        botonSimular.setOnClickListener((v) -> {
+
+            Intent i = new Intent(MainActivity.this, Actividad2.class);
+
+            i.putExtra("moneda", adapter.getItem(spinner.getSelectedItemPosition()));
+
+            startActivityForResult(i, CODIGO_ACTIVIDAD2);
+        });
+
+
     }
 }
