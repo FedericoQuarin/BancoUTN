@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BancoUTN</string>
+    <string name="textoInformativoPantalla1">Para constituir tu plazo fijo necesitamos que nos proveas algunos datos.</string>
+    <string name="titulo">Banco UTN Santa Fe</string>
 </resources>
