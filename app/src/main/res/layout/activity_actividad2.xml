@@ -27,16 +27,18 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_weight="1"
-            android:contentDescription="f"
+            android:contentDescription="@string/logo_de_la_facultad"
             app:srcCompat="@drawable/utn_logo" />
 
         <TextView
             android:id="@+id/bancoTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:gravity="center_horizontal"
-            android:text="@string/titulo" />
+            android:text="@string/titulo"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -50,13 +52,15 @@
             android:id="@+id/TxtViewTasaNominalAnual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:text="Tasa Nominal Anual" />
+            android:text="@string/tasa_nominal_anual" />
 
         <EditText
             android:id="@+id/TSAEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal" />
@@ -72,13 +76,15 @@
             android:id="@+id/TxtviewTasaEfectivaAnual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:text="Tasa Efectiva Anual" />
+            android:text="@string/tasa_efectiva_anual" />
 
         <EditText
-            android:id="@+id/TEAeditTextText"
+            android:id="@+id/TEAEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal" />
@@ -94,13 +100,15 @@
             android:id="@+id/TxtviewCapital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:text="Capital a Invertir ($)" />
+            android:text="@string/capital_a_invertir" />
 
         <EditText
             android:id="@+id/editTextTextCapital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal" />
@@ -112,30 +120,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:progress="0" />
+        android:max="24"
+        android:progress="1" />
 
     <TextView
         android:id="@+id/textViewDias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="30 Días" />
 
     <CheckBox
         android:id="@+id/checkBoxRenovacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Con renovación automática" />
+        android:text="@string/con_renovaci_n_autom_tica" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textViewLabelPlazo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Plazo:" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/plazo" />
 
         <TextView
             android:id="@+id/textViewPlazoDias"
@@ -144,5 +156,103 @@
             android:layout_weight="1"
             android:text="30 Días" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewCapitalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/capital" />
+
+        <TextView
+            android:id="@+id/textViewCapital"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cero" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewInteresesGanadosLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/intereses_ganados" />
+
+        <TextView
+            android:id="@+id/textViewInteresesGanados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cero" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewMontoTotalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/monto_total" />
+
+        <TextView
+            android:id="@+id/textViewMontoTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cero" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewMontoTotalAnualLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/monto_total_anual" />
+
+        <TextView
+            android:id="@+id/textViewMontoTotalAnual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cero" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/confirmar" />
 
 </LinearLayout>

@@ -27,16 +27,18 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_weight="1"
-            android:contentDescription="f"
+            android:contentDescription="@string/logo_de_la_facultad"
             app:srcCompat="@drawable/utn_logo" />
 
         <TextView
             android:id="@+id/bancoTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:gravity="center_horizontal"
-            android:text="@string/titulo" />
+            android:text="@string/titulo"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -44,6 +46,10 @@
         android:id="@+id/descriptivoTxtView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center_horizontal"
         android:text="@string/textoInformativoPantalla1" />
 
@@ -56,6 +62,8 @@
             android:id="@+id/TxtViewTasaNominalAnual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="Nombre" />
 
@@ -63,6 +71,7 @@
             android:id="@+id/TSAEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName" />
@@ -78,6 +87,8 @@
             android:id="@+id/apellidoTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="Apellido" />
 
@@ -85,6 +96,7 @@
             android:id="@+id/apellidoEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName" />
@@ -100,6 +112,8 @@
             android:id="@+id/monedaTxtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="Moneda" />
 
@@ -107,6 +121,7 @@
             android:id="@+id/monedasSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1" />
 
     </LinearLayout>
@@ -115,6 +130,8 @@
         android:id="@+id/buttonSimular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="SIMULAR" />
 
     <TextView
@@ -127,6 +144,8 @@
         android:id="@+id/buttonConstituir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:enabled="false"
         android:text="CONSTITUIR" />
 </LinearLayout>
