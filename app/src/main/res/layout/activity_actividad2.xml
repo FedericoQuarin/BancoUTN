@@ -105,7 +105,7 @@
             android:text="@string/capital_a_invertir" />
 
         <EditText
-            android:id="@+id/editTextTextCapital"
+            android:id="@+id/editTextCapital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"

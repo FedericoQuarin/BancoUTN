@@ -30,7 +30,7 @@ public class Actividad2 extends AppCompatActivity {
         // EditTexts
         TextView textEditTasaNominalAnual = binding.TSAEditText;
         TextView textEditTasaEfectivaAnual = binding.TEAEditText;
-        TextView textEditCapitalAInvertir = binding.editTextTextCapital;
+        TextView textEditCapitalAInvertir = binding.editTextCapital;
 
         // TextViews
         TextView txtDias = binding.textViewDias;
