@@ -1,12 +1,15 @@
 package chort_quarin_reynoso.bancoutn;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -38,6 +41,7 @@ public class Actividad2 extends AppCompatActivity {
         TextView textViewInteresesGanados = binding.textViewInteresesGanados;
         TextView textViewMontoTotal = binding.textViewMontoTotal;
         TextView textViewMontoTotalAnual = binding.textViewMontoTotalAnual;
+        Button buttonConfirmar = binding.buttonConfirmar;
 
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -96,10 +100,22 @@ public class Actividad2 extends AppCompatActivity {
 
             }
         });
+
+        buttonConfirmar.setOnClickListener(view -> {
+            Intent i = new Intent();
+            String capital = textEditCapitalAInvertir.getText().toString();
+
+            if (TextUtils.isEmpty(capital)) {
+                textEditCapitalAInvertir.setError("Campo obligatorio");
+            }
+            else {
+                i.putExtra("capita", capital);
+                i.putExtra("dias", seekbar.getProgress());
+                setResult(0, i);
+                finish();
+            }
+        });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+
 }
