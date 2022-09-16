@@ -1,12 +1,15 @@
 package chort_quarin_reynoso.bancoutn;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -28,9 +31,9 @@ public class Actividad2 extends AppCompatActivity {
 
 
         // EditTexts
-        TextView textEditTasaNominalAnual = binding.TSAEditText;
+        TextView textEditTasaNominalAnual = binding.tasaNominalAnualEditText;
         TextView textEditTasaEfectivaAnual = binding.TEAEditText;
-        TextView textEditCapitalAInvertir = binding.editTextTextCapital;
+        TextView textEditCapitalAInvertir = binding.editTextCapital;
 
         // TextViews
         TextView txtDias = binding.textViewDias;
@@ -38,6 +41,7 @@ public class Actividad2 extends AppCompatActivity {
         TextView textViewInteresesGanados = binding.textViewInteresesGanados;
         TextView textViewMontoTotal = binding.textViewMontoTotal;
         TextView textViewMontoTotalAnual = binding.textViewMontoTotalAnual;
+        Button buttonConfirmar = binding.buttonConfirmar;
 
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -122,6 +126,7 @@ public class Actividad2 extends AppCompatActivity {
                     Float capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
                     textViewInteresesGanados.setText(String.valueOf(interesAnual / 12 * capital));
                 }
+
                 /*else {
                     textViewInteresesGanados.setText("");
                 }*/
@@ -133,12 +138,5 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
