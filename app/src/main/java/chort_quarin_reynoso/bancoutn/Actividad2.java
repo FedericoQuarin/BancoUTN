@@ -71,6 +71,33 @@ public class Actividad2 extends AppCompatActivity {
 //                Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
 //                Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
 //                textViewInteresesGanados.setText(interesAnual / 12 * capital);
+
+                // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
+                System.out.println(textEditTasaNominalAnual.getText().length());
+                System.out.println(textEditCapitalAInvertir.getText().length());
+                if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
+                    System.out.println("Hola");
+                    Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
+                    Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
+                    textViewInteresesGanados.setText(interesAnual / 12 * capital);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        textEditTasaEfectivaAnual.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
@@ -89,6 +116,16 @@ public class Actividad2 extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 textViewCapital.setText(charSequence);
                 //textViewInteresesGanados.setText();
+
+                // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
+                System.out.println(textEditTasaNominalAnual.getText().length());
+                System.out.println(textEditCapitalAInvertir.getText().length());
+                if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
+                    System.out.println("Hola");
+                    Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
+                    Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
+                    textViewInteresesGanados.setText(interesAnual / 12 * capital);
+                }
             }
 
             @Override
@@ -96,7 +133,10 @@ public class Actividad2 extends AppCompatActivity {
 
             }
         });
+
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
