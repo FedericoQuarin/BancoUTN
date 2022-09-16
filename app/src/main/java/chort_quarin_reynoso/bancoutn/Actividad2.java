@@ -138,5 +138,19 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
+        buttonConfirmar.setOnClickListener(view -> {
+            Intent i = new Intent();
+            String capital = textEditCapitalAInvertir.getText().toString();
+
+            if (TextUtils.isEmpty(capital)) {
+                textEditCapitalAInvertir.setError("Campo obligatorio");
+            }
+            else {
+                i.putExtra("capital", capital);
+                i.putExtra("dias", seekbar.getProgress());
+                setResult(0, i);
+                finish();
+            }
+        });
     }
 }
