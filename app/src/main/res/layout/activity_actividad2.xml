@@ -57,10 +57,9 @@
             android:text="@string/tasa_nominal_anual" />
 
         <EditText
-            android:id="@+id/TSAEditText"
+            android:id="@+id/tasaNominalAnualEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal" />
