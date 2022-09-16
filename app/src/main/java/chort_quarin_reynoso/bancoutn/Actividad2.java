@@ -31,7 +31,7 @@ public class Actividad2 extends AppCompatActivity {
 
 
         // EditTexts
-        TextView textEditTasaNominalAnual = binding.TSAEditText;
+        TextView textEditTasaNominalAnual = binding.tasaNominalAnualEditText;
         TextView textEditTasaEfectivaAnual = binding.TEAEditText;
         TextView textEditCapitalAInvertir = binding.editTextCapital;
 
@@ -109,7 +109,7 @@ public class Actividad2 extends AppCompatActivity {
                 textEditCapitalAInvertir.setError("Campo obligatorio");
             }
             else {
-                i.putExtra("capita", capital);
+                i.putExtra("capital", capital);
                 i.putExtra("dias", seekbar.getProgress());
                 setResult(0, i);
                 finish();
