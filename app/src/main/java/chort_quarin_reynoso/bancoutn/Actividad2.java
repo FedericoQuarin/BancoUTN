@@ -59,6 +59,7 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
+        // Tasa Nominal Anual
         textEditTasaNominalAnual.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -67,20 +68,16 @@ public class Actividad2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // Claramente no anda porque no siempre tiene todos los valores seteados y tira nullpointerexception,
-//                Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
-//                Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
-//                textViewInteresesGanados.setText(interesAnual / 12 * capital);
-
                 // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
-                System.out.println(textEditTasaNominalAnual.getText().length());
-                System.out.println(textEditCapitalAInvertir.getText().length());
                 if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
-                    System.out.println("Hola");
-                    Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
-                    Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
-                    textViewInteresesGanados.setText(interesAnual / 12 * capital);
+                    Float interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
+                    Float capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
+                    textViewInteresesGanados.setText(String.valueOf(interesAnual / 12 * capital));
                 }
+
+                /*else {
+                    textViewInteresesGanados.setText("");
+                }*/
             }
 
             @Override
@@ -89,6 +86,7 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
+        // Tasa Efectiva Anual
         textEditTasaEfectivaAnual.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -106,6 +104,7 @@ public class Actividad2 extends AppCompatActivity {
             }
         });
 
+        // Capital a invertir
         textEditCapitalAInvertir.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -115,17 +114,17 @@ public class Actividad2 extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 textViewCapital.setText(charSequence);
-                //textViewInteresesGanados.setText();
 
                 // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
-                System.out.println(textEditTasaNominalAnual.getText().length());
-                System.out.println(textEditCapitalAInvertir.getText().length());
                 if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
                     System.out.println("Hola");
-                    Integer interesAnual = Integer.parseInt(textEditTasaEfectivaAnual.getText().toString());
-                    Integer capital = Integer.parseInt(textEditCapitalAInvertir.getText().toString());
-                    textViewInteresesGanados.setText(interesAnual / 12 * capital);
+                    Float interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
+                    Float capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
+                    textViewInteresesGanados.setText(String.valueOf(interesAnual / 12 * capital));
                 }
+                /*else {
+                    textViewInteresesGanados.setText("");
+                }*/
             }
 
             @Override
