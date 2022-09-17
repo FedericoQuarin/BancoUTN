@@ -120,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:max="24"
+        android:min="1"
         android:progress="1" />
 
     <TextView
@@ -153,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="30 Días" />
+            android:text="30 Días - 1 Mes" />
     </LinearLayout>
 
     <LinearLayout
