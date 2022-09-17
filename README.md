@@ -14,6 +14,6 @@ Es una aplicación de un banco que consiste en dos pantallas en donde se puede s
 
 #### Objetivo:
 
-![imagen](https://user-images.githubusercontent.com/57647406/189911766-5a4c2697-a857-485f-928a-bd7459f171aa.png)
+![Objetivo](https://user-images.githubusercontent.com/57647406/190877949-73b34d12-567f-46e9-942b-b3d0acd10bb4.png)
 
 #### Resolución:
