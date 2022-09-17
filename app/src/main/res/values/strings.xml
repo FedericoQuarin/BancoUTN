@@ -14,4 +14,6 @@
     <string name="confirmar">CONFIRMAR</string>
     <string name="cero">0</string>
     <string name="logo_de_la_facultad">Logo de la facultad</string>
+    <string name="plazo_de_inversion">Plazo de inversión</string>
+    <string name="_30_dias">30 Días</string>
 </resources>
