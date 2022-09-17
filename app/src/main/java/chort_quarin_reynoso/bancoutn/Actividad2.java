@@ -153,9 +153,21 @@ public class Actividad2 extends AppCompatActivity {
         buttonConfirmar.setOnClickListener(view -> {
             Intent i = new Intent();
             String capital = textEditCapitalAInvertir.getText().toString();
+            String TasaNominalAnual = textEditTasaNominalAnual.getText().toString();
+            String TasaEfectivaAnual = textEditTasaEfectivaAnual.getText().toString();
 
-            if (TextUtils.isEmpty(capital)) {
-                textEditCapitalAInvertir.setError("Campo obligatorio");
+            boolean hayAlgunCampoVacio = TextUtils.isEmpty(capital) || TextUtils.isEmpty(TasaNominalAnual) || TextUtils.isEmpty(TasaEfectivaAnual);
+
+            if (hayAlgunCampoVacio) {
+                if (TextUtils.isEmpty(capital) ) {
+                    textEditCapitalAInvertir.setError("Campo obligatorio");
+                }
+                if (TextUtils.isEmpty(TasaNominalAnual) ) {
+                    textEditTasaNominalAnual.setError("Campo obligatorio");
+                }
+                if (TextUtils.isEmpty(TasaEfectivaAnual) ) {
+                    textEditTasaEfectivaAnual.setError("Campo obligatorio");
+                }
             }
             else {
                 i.putExtra("capital", capital);
@@ -169,6 +181,7 @@ public class Actividad2 extends AppCompatActivity {
     private void cambiarInformacionPlazo() {
         // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
         if (TextUtils.isEmpty(textEditTasaNominalAnual.getText()) || TextUtils.isEmpty(textEditCapitalAInvertir.getText())) {
+            textViewCapital.setText("0");
             textViewInteresesGanados.setText("0");
             textViewMontoTotal.setText("0");
         }
