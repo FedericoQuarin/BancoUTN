@@ -60,6 +60,7 @@
             android:id="@+id/tasaNominalAnualEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberDecimal" />
@@ -136,6 +137,15 @@
         android:layout_height="wrap_content"
         android:text="@string/con_renovaci_n_autom_tica" />
 
+    <TextView
+        android:id="@+id/labelSimuladorPlazoFijo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simulador Plazo Fijo en Pesos"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -154,7 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="30 Días - 1 Mes" />
+            android:text="30 Días / 1 Mes" />
     </LinearLayout>
 
     <LinearLayout
