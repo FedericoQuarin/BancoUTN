@@ -170,6 +170,7 @@ public class Actividad2 extends AppCompatActivity {
                 }
             }
             else {
+
                 i.putExtra("capital", capital);
                 i.putExtra("dias", seekbar.getProgress());
                 setResult(0, i);
