@@ -19,6 +19,29 @@ public class Actividad2 extends AppCompatActivity {
 
     private ActivityActividad2Binding binding;
 
+    // Seekbar
+    SeekBar seekbar;
+
+    // EditTexts
+    TextView textEditTasaNominalAnual;
+    TextView textEditTasaEfectivaAnual;
+    TextView textEditCapitalAInvertir;
+
+    // TextViews
+    TextView txtDias;
+    TextView textViewPlazoDias;
+    TextView textViewCapital;
+    TextView textViewInteresesGanados;
+    TextView textViewMontoTotal;
+    TextView textViewMontoTotalAnual;
+    Button buttonConfirmar;
+
+    Float interesAnual;
+    Float interesPorMes;
+    Integer cantidadMeses;
+    Float capital;
+    Float interesesGanados;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,29 +50,37 @@ public class Actividad2 extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Seekbar
-        SeekBar seekbar = binding.seekBarDias;
+        seekbar = binding.seekBarDias;
 
 
         // EditTexts
-        TextView textEditTasaNominalAnual = binding.tasaNominalAnualEditText;
-        TextView textEditTasaEfectivaAnual = binding.TEAEditText;
-        TextView textEditCapitalAInvertir = binding.editTextCapital;
+        textEditTasaNominalAnual = binding.tasaNominalAnualEditText;
+        textEditTasaEfectivaAnual = binding.TEAEditText;
+        textEditCapitalAInvertir = binding.editTextCapital;
 
         // TextViews
-        TextView txtDias = binding.textViewDias;
-        TextView textViewCapital = binding.textViewCapital;
-        TextView textViewInteresesGanados = binding.textViewInteresesGanados;
-        TextView textViewMontoTotal = binding.textViewMontoTotal;
-        TextView textViewMontoTotalAnual = binding.textViewMontoTotalAnual;
-        Button buttonConfirmar = binding.buttonConfirmar;
+        txtDias = binding.textViewDias;
+        textViewPlazoDias = binding.textViewPlazoDias;
+        textViewCapital = binding.textViewCapital;
+        textViewInteresesGanados = binding.textViewInteresesGanados;
+        textViewMontoTotal = binding.textViewMontoTotal;
+        textViewMontoTotalAnual = binding.textViewMontoTotalAnual;
+        buttonConfirmar = binding.buttonConfirmar;
 
-
+        // SeekBar
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
                 txtDias.setText(i * 30 + " Días");
+                if (i == 1) {
+                    textViewPlazoDias.setText(i * 30 + " Días / " + i + " Mes" );
+                } else {
+                    textViewPlazoDias.setText(i * 30 + " Días / " + i + " Meses" );
+                }
 
+
+                cambiarInformacionPlazo();
             }
 
             @Override
@@ -72,16 +103,7 @@ public class Actividad2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
-                if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
-                    Float interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
-                    Float capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
-                    textViewInteresesGanados.setText(String.valueOf(interesAnual / 12 * capital));
-                }
-
-                /*else {
-                    textViewInteresesGanados.setText("");
-                }*/
+               cambiarInformacionPlazo();
             }
 
             @Override
@@ -99,7 +121,7 @@ public class Actividad2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                cambiarInformacionPlazo();
             }
 
             @Override
@@ -119,17 +141,7 @@ public class Actividad2 extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 textViewCapital.setText(charSequence);
 
-                // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
-                if (textEditTasaNominalAnual.getText().length() > 0 && textEditCapitalAInvertir.getText().length() > 0) {
-                    System.out.println("Hola");
-                    Float interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
-                    Float capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
-                    textViewInteresesGanados.setText(String.valueOf(interesAnual / 12 * capital));
-                }
-
-                /*else {
-                    textViewInteresesGanados.setText("");
-                }*/
+                cambiarInformacionPlazo();
             }
 
             @Override
@@ -152,5 +164,24 @@ public class Actividad2 extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void cambiarInformacionPlazo() {
+        // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
+        if (TextUtils.isEmpty(textEditTasaNominalAnual.getText()) || TextUtils.isEmpty(textEditCapitalAInvertir.getText())) {
+            textViewInteresesGanados.setText("0");
+            textViewMontoTotal.setText("0");
+        }
+
+        else {
+            interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
+            interesPorMes = interesAnual/12;
+            cantidadMeses = seekbar.getProgress();
+            capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
+            interesesGanados = (interesPorMes) /100  * capital * cantidadMeses;
+
+            textViewInteresesGanados.setText(String.valueOf(interesesGanados));
+            textViewMontoTotal.setText(String.valueOf(interesesGanados + capital));
+        }
     }
 }
