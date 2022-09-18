@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                                 + capitalInversion + " "
                                 + adapter.getItem(spinner.getSelectedItemPosition()).toString().toLowerCase(Locale.ROOT)
                                 + " por " + diasInversion
-                                + " dias ha sido constituido.")
-                        .setNeutralButton("PIOLA!", (dialogInterface, i) -> listenerBotonAceptar())
+                                + " días ha sido constituido.")
+                        .setPositiveButton("PIOLA!", (dialogInterface, i) -> listenerBotonAceptar())
                         .show();
             }
         });

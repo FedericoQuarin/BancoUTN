@@ -41,6 +41,7 @@ public class Actividad2 extends AppCompatActivity {
     Integer cantidadMeses;
     Float capital;
     Float interesesGanados;
+    Float montoTotalAnual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,10 +193,12 @@ public class Actividad2 extends AppCompatActivity {
             interesPorMes = interesAnual/12;
             cantidadMeses = seekbar.getProgress();
             capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
-            interesesGanados = (interesPorMes) /100  * capital * cantidadMeses;
+            interesesGanados = (interesPorMes) / 100  * capital * cantidadMeses;
+            montoTotalAnual = (interesPorMes) / 100  * capital * 12 + capital;
 
             textViewInteresesGanados.setText(String.valueOf(interesesGanados));
             textViewMontoTotal.setText(String.valueOf(interesesGanados + capital));
+            textViewMontoTotalAnual.setText(String.valueOf(montoTotalAnual));
         }
     }
 }
