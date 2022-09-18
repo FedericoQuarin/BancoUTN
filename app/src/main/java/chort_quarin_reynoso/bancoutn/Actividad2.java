@@ -172,7 +172,7 @@ public class Actividad2 extends AppCompatActivity {
             else {
 
                 i.putExtra("capital", capital);
-                i.putExtra("dias", seekbar.getProgress());
+                i.putExtra("dias", seekbar.getProgress() * 30);
                 setResult(0, i);
                 finish();
             }
