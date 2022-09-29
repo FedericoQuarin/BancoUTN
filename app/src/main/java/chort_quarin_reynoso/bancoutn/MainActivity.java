@@ -72,7 +72,16 @@ public class MainActivity extends AppCompatActivity {
             if (camposValidos()) {
                 Intent i = new Intent(MainActivity.this, Actividad2.class);
 
-                i.putExtra("moneda", adapter.getItem(spinner.getSelectedItemPosition()));
+                String simboloMoneda;
+
+                if(adapter.getItem(spinner.getSelectedItemPosition()).toString().equals("PESOS")) {
+                    simboloMoneda = "$";
+                }
+                else {
+                    simboloMoneda = "US$";
+                }
+
+                i.putExtra("moneda", simboloMoneda);
 
                 startActivityForResult(i, CODIGO_ACTIVIDAD2);
             }

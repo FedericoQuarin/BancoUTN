@@ -6,7 +6,7 @@
 
 #### Autores: 
 
-Chort Julio - Quarin Federico - Reynoso Valentín
+Chort Julio Alberto - Quarin Federico - Reynoso Valentín
 
 #### Concepto:
   
