@@ -1,5 +1,6 @@
 package chort_quarin_reynoso.bancoutn;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +29,9 @@ public class Actividad2 extends AppCompatActivity {
     TextView textEditCapitalAInvertir;
 
     // TextViews
-    TextView txtDias;
+    TextView textCapitalAInvertir;
+    TextView textViewSimuladorPlazoFijo;
+    TextView textDias;
     TextView textViewPlazoDias;
     TextView textViewCapital;
     TextView textViewInteresesGanados;
@@ -43,9 +46,13 @@ public class Actividad2 extends AppCompatActivity {
     Float interesesGanados;
     Float montoTotalAnual;
 
+    String tipoMoneda;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        tipoMoneda = getIntent().getExtras().get("moneda").toString(); //Recupera el tipo de moneda elegido por el usuario
 
         binding = ActivityActividad2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -60,7 +67,9 @@ public class Actividad2 extends AppCompatActivity {
         textEditCapitalAInvertir = binding.editTextCapital;
 
         // TextViews
-        txtDias = binding.textViewDias;
+        textCapitalAInvertir = binding.TxtviewCapital;
+        textViewSimuladorPlazoFijo = binding.labelSimuladorPlazoFijo;
+        textDias = binding.textViewDias;
         textViewPlazoDias = binding.textViewPlazoDias;
         textViewCapital = binding.textViewCapital;
         textViewInteresesGanados = binding.textViewInteresesGanados;
@@ -68,12 +77,25 @@ public class Actividad2 extends AppCompatActivity {
         textViewMontoTotalAnual = binding.textViewMontoTotalAnual;
         buttonConfirmar = binding.buttonConfirmar;
 
+        //Texto de capital a invertir
+        textCapitalAInvertir.setText("Capital a Invertir (" + tipoMoneda + "): ");
+
+        //Texto de simulador de plazo fijo
+        if(tipoMoneda.equals("US$"))
+            textViewSimuladorPlazoFijo.setText("Simulador Plazo Fijo en Dólares");
+
+        //Texto de los campos numéricos con sus correspondientes monedas
+        textViewCapital.setText(tipoMoneda + " 0");
+        textViewInteresesGanados.setText(tipoMoneda + " 0");
+        textViewMontoTotal.setText(tipoMoneda + " 0");
+        textViewMontoTotalAnual.setText(tipoMoneda + " 0");
+
         // SeekBar
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
-                txtDias.setText(i * 30 + " Días");
+                textDias.setText(i * 30 + " Días");
                 if (i == 1) {
                     textViewPlazoDias.setText(i * 30 + " Días / " + i + " Mes" );
                 } else {
@@ -140,7 +162,6 @@ public class Actividad2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                textViewCapital.setText(charSequence);
 
                 cambiarInformacionPlazo();
             }
@@ -158,8 +179,9 @@ public class Actividad2 extends AppCompatActivity {
             String TasaEfectivaAnual = textEditTasaEfectivaAnual.getText().toString();
 
             boolean hayAlgunCampoVacio = TextUtils.isEmpty(capital) || TextUtils.isEmpty(TasaNominalAnual) || TextUtils.isEmpty(TasaEfectivaAnual);
+            boolean hayAlgunCampoDistintoDeNumero = !textoIngresadoSonNumeros();
 
-            if (hayAlgunCampoVacio) {
+            if (hayAlgunCampoVacio || hayAlgunCampoDistintoDeNumero) {
                 if (TextUtils.isEmpty(capital) ) {
                     textEditCapitalAInvertir.setError("Campo obligatorio");
                 }
@@ -182,23 +204,57 @@ public class Actividad2 extends AppCompatActivity {
 
     private void cambiarInformacionPlazo() {
         // Si el editText tasaNominalAnual y el capital no estan vacios puedo hacer el calculo
-        if (TextUtils.isEmpty(textEditTasaNominalAnual.getText()) || TextUtils.isEmpty(textEditCapitalAInvertir.getText())) {
-            textViewCapital.setText("0");
-            textViewInteresesGanados.setText("0");
-            textViewMontoTotal.setText("0");
+        if (TextUtils.isEmpty(textEditTasaNominalAnual.getText()) || TextUtils.isEmpty(textEditCapitalAInvertir.getText()) || !textoIngresadoSonNumeros()) {
+
+                textViewCapital.setText(tipoMoneda + " 0");
+                textViewInteresesGanados.setText(tipoMoneda + " 0");
+                textViewMontoTotal.setText(tipoMoneda + " 0");
+                textViewMontoTotalAnual.setText(tipoMoneda + " 0");
+
         }
 
         else {
-            interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
-            interesPorMes = interesAnual/12;
-            cantidadMeses = seekbar.getProgress();
-            capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
-            interesesGanados = (interesPorMes) / 100  * capital * cantidadMeses;
-            montoTotalAnual = (interesPorMes) / 100  * capital * 12 + capital;
 
-            textViewInteresesGanados.setText(String.valueOf(interesesGanados));
-            textViewMontoTotal.setText(String.valueOf(interesesGanados + capital));
-            textViewMontoTotalAnual.setText(String.valueOf(montoTotalAnual));
+            if(textoIngresadoSonNumeros()) {
+                interesAnual = Float.parseFloat(textEditTasaNominalAnual.getText().toString());
+                interesPorMes = interesAnual / 12;
+                cantidadMeses = seekbar.getProgress();
+                capital = Float.parseFloat(textEditCapitalAInvertir.getText().toString());
+                interesesGanados = (interesPorMes) / 100 * capital * cantidadMeses;
+                montoTotalAnual = (interesPorMes) / 100 * capital * 12 + capital;
+
+                textViewCapital.setText(tipoMoneda + " " + String.valueOf(capital));
+                textViewInteresesGanados.setText(tipoMoneda + " " + String.valueOf(interesesGanados));
+                textViewMontoTotal.setText(tipoMoneda + " " + String.valueOf(interesesGanados + capital));
+                textViewMontoTotalAnual.setText(tipoMoneda + " " + String.valueOf(montoTotalAnual));
+            }
         }
+    }
+
+    private boolean textoIngresadoSonNumeros(){
+        boolean veredicto = true;
+
+        try {
+            Float.parseFloat(textEditCapitalAInvertir.getText().toString());
+            Float.parseFloat(textEditTasaNominalAnual.getText().toString());
+            Float.parseFloat(textEditTasaEfectivaAnual.getText().toString());
+        } catch (NumberFormatException e) {
+            veredicto = false;
+        }
+
+        return veredicto;
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putFloat("capital", capital);
+        outState.putString("TNA", textEditTasaEfectivaAnual.getText().toString());
+        outState.putString("TEA", textEditTasaEfectivaAnual.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
